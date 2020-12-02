@@ -10,7 +10,9 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.showtext = TRUE,
+  dpi = 300
 )
 ```
 
@@ -18,6 +20,10 @@ knitr::opts_chunk$set(
 library(pkgact)
 library(dplyr)
 library(ggplot2)
+library(showtext)
+
+showtext::showtext_auto()
+showtext::showtext_opts(dpi = 300)
 ```
 
 Here's a chart
