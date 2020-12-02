@@ -1,0 +1,36 @@
+---
+title: "dummy"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{dummy}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(pkgact)
+library(dplyr)
+library(ggplot2)
+```
+
+Here's a chart
+
+```{r}
+edu %>%
+  select(-moe) %>%
+  group_by(name) %>%
+  mutate(share = estimate / estimate[1]) %>%
+  filter(variable == "masters") %>%
+  ggplot(aes(x = name, y = share)) +
+  geom_col(width = 0.8) +
+  labs(x = NULL, y = "Share", title = "Share of adults ages 25+ with a master's degree, 2016") +
+  theme_din()
+```
+
