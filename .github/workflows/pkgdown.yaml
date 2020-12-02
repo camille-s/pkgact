@@ -32,7 +32,7 @@ jobs:
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
       - name: Install package
-        run: devtools::install()
+        run: Rscript -e "devtools::install()"
 
       - name: Check
         run: devtools::check(error_on = "error", cran = FALSE)
