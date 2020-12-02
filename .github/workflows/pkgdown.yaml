@@ -20,7 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages("renv", "pkgdown", "devtools")
+          install.packages("renv", "devtools")
+          install.packages("pkgdown", type = "binary")
           renv::restore()
         shell: Rscript {0}
 
