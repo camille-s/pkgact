@@ -2,6 +2,7 @@
 # pkgact
 
 <!-- badges: start -->
+[![R build status](https://github.com/camille-s/pkgact/workflows/R-CMD-check/badge.svg)](https://github.com/camille-s/pkgact/actions)
 <!-- badges: end -->
 
 The goal of pkgact is to ...
