@@ -1,0 +1,5 @@
+Name: DataHaven project scaffold
+Description: Scaffold a simple DataHaven project with some customization available
+Binding: dh_scaffold
+Interactive: true
+

@@ -27,7 +27,9 @@ Imports:
     ggplot2,
     tidycensus,
     dplyr,
-    stringr
+    stringr,
+    purrr,
+    tibble
 Depends: 
     R (>= 4.0.1)
 VignetteBuilder: knitr
