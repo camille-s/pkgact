@@ -19,6 +19,9 @@ jobs:
           r-version: '4.0.5'
 
       - uses: r-lib/actions/setup-pandoc@v1
+      
+      - name: "[Custom] [Stage] [Linux] Install pkgdown system lib req"
+        run: sudo apt-get install libharfbuzz-dev libfribidi-dev libgit2-dev
 
       - name: Install spatial libraries
         run: sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev
