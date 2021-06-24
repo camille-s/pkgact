@@ -25,11 +25,11 @@ Imports:
     showtext,
     sysfonts,
     ggplot2,
-    tidycensus,
     dplyr,
     stringr,
     purrr,
-    tibble
+    tibble,
+    sf
 Depends: 
     R (>= 4.0.1)
 VignetteBuilder: knitr

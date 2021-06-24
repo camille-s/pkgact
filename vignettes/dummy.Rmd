@@ -21,6 +21,7 @@ library(pkgact)
 library(dplyr)
 library(ggplot2)
 library(showtext)
+library(sf)
 
 showtext::showtext_auto()
 showtext::showtext_opts(dpi = 300)
@@ -38,5 +39,13 @@ edu %>%
   geom_col(width = 0.8) +
   labs(x = NULL, y = "Share", title = "Share of adults ages 25+ with a master's degree, 2016") +
   theme_din()
+```
+
+And a map
+
+```{r}
+ggplot(counties, aes(fill = pop_density)) +
+  geom_sf(color = "darkslateblue") +
+  scale_fill_fermenter(direction = 1)
 ```
 
