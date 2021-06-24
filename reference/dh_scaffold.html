@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Theme Din — theme_din • pkgact</title>
+<title>dh_scaffold — dh_scaffold • pkgact</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Theme Din — theme_din" />
-<meta property="og:description" content="A clean theme especially suited for labeled bar charts or Cleveland dot plots. Designed based on the DIN family of fonts, but now defaults to font &quot;Roboto Condensed&quot;.
-This defaults to base_family = &quot;roboto&quot;, which depends on a) using showtext and sysfonts to get a font called &quot;roboto&quot;, or b) already having a font loaded with this name. Use sysfonts::font_add_google or sysfonts::font_add to set a different font." />
+<meta property="og:title" content="dh_scaffold — dh_scaffold" />
+<meta property="og:description" content="Setup directories for a typical DataHaven project" />
 
 
 
@@ -121,52 +120,98 @@ This defaults to base_family = &quot;roboto&quot;, which depends on a) using sho
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Theme Din</h1>
-    <small class="dont-index">Source: <a href='https://github.com/camille-s/pkgact/blob/master/R/theme_din.R'><code>R/theme_din.R</code></a></small>
-    <div class="hidden name"><code>theme_din.Rd</code></div>
+    <h1>dh_scaffold</h1>
+    <small class="dont-index">Source: <a href='https://github.com/camille-s/pkgact/blob/master/R/dh_scaffold.R'><code>R/dh_scaffold.R</code></a></small>
+    <div class="hidden name"><code>dh_scaffold.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A clean theme especially suited for labeled bar charts or Cleveland dot plots. Designed based on the DIN family of fonts, but now defaults to font "Roboto Condensed".
-This defaults to <code>base_family = "roboto"</code>, which depends on a) using <code>showtext</code> and <code>sysfonts</code> to get a font called "roboto", or b) already having a font loaded with this name. Use <code><a href='https://rdrr.io/pkg/sysfonts/man/font_add_google.html'>sysfonts::font_add_google</a></code> or <code><a href='https://rdrr.io/pkg/sysfonts/man/font_add.html'>sysfonts::font_add</a></code> to set a different font.</p>
+    <p>Setup directories for a typical DataHaven project</p>
     </div>
 
-    <pre class="usage"><span class='fu'>theme_din</span><span class='op'>(</span>
-  base_size <span class='op'>=</span> <span class='fl'>14</span>,
-  base_family <span class='op'>=</span> <span class='st'>"roboto"</span>,
-  xgrid <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  ygrid <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  fallback_google <span class='op'>=</span> <span class='cn'>TRUE</span>
+    <pre class="usage"><span class='fu'>dh_scaffold</span><span class='op'>(</span>
+  dir <span class='op'>=</span> <span class='st'>"."</span>,
+  input_data <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  output_data <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  fetch_data <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  analysis <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  prep_scripts <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  plots <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  format_tables <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  drafts <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  utils <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  addl <span class='op'>=</span> <span class='cn'>NULL</span>,
+  gitblank <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>base_size</th>
-      <td><p>Base font size</p></td>
+      <th>dir</th>
+      <td><p>String: path to directory in which new files will be written. Default: '.'</p></td>
     </tr>
     <tr>
-      <th>base_family</th>
-      <td><p>Base font family; defaults to "roboto", as set by <code>showtext</code></p></td>
+      <th>input_data</th>
+      <td><p>Create a directory <code>input_data</code>. Default: TRUE.</p>
+<p>Standard use: data from some outside source to be analyzed in this project.</p></td>
     </tr>
     <tr>
-      <th>xgrid</th>
-      <td><p>A logical for turning x-grid on or off, or "dotted", for a light dotted grid</p></td>
+      <th>output_data</th>
+      <td><p>Create a directory <code>output_data</code>. Default: TRUE.</p>
+<p>Standard use: data written after analysis done in this project, generally in formats that can still be used for analysis and visualization (csv, rds) rather than formats for distribution (I usually add a folder <code>to_distro</code>) or to pass on to a client (xlsx). Nice spreadsheet outputs should go in <code>format_tables</code> or some other distribution-centered folder.</p></td>
     </tr>
     <tr>
-      <th>ygrid</th>
-      <td><p>A logical for turning y-grid on or off, or "dotted", for a light dotted grid</p></td>
+      <th>fetch_data</th>
+      <td><p>Create a directory <code>fetch_data</code>. Default: TRUE.</p>
+<p>Standard use: a place to dump data as it comes in from API calls, queries, batch file downloads, etc.</p></td>
     </tr>
     <tr>
-      <th>fallback_google</th>
-      <td><p>Logical: if <code>TRUE</code> and <code>base_family</code> not currently loaded, will load Roboto Condensed from Google. If <code>FALSE</code>, will load system sans font. Defaults <code>TRUE</code>.</p></td>
+      <th>analysis</th>
+      <td><p>Create a directory <code>analysis</code>. Default: TRUE</p>
+<p>Standard use: main analysis scripts, both notebooks and .R scripts.</p></td>
+    </tr>
+    <tr>
+      <th>prep_scripts</th>
+      <td><p>Create a directory <code>prep_scripts</code>. Default: FALSE</p>
+<p>Standard use: scripts use to prep or reshape data or documents, e.g. creating formatted spreadsheets for a client, making metadata, prepping to post to data.world, formatting for a website, bulk rendering parameterized Rmarkdown documents.</p></td>
+    </tr>
+    <tr>
+      <th>plots</th>
+      <td><p>Create a directory <code>plots</code>. Default: FALSE</p>
+<p>Standard use: plots, either for in-house use or outside distribution.</p></td>
+    </tr>
+    <tr>
+      <th>format_tables</th>
+      <td><p>Create a directory <code>format_tables</code>. Default: FALSE</p>
+<p>Standard use: spreadsheets--probably written by a script in <code>prep_scripts</code>--to be shared with clients or collaborators. Think of these as being files appropriate for presentation or addenda to a report, not for doing further analysis.</p></td>
+    </tr>
+    <tr>
+      <th>drafts</th>
+      <td><p>Create a directory <code>drafts</code>. Default: FALSE</p>
+<p>Standard use: separating the more EDA-centered notebooks from notebooks used for drafting writing. Also a good place to keep files that have been edited in outside software (.docx, etc).</p></td>
+    </tr>
+    <tr>
+      <th>utils</th>
+      <td><p>Create a directory <code>utils</code>. Default: TRUE</p>
+<p>Standard use: utility scripts and miscellaneous files, e.g. logo images, snippets of data, lists of colors to use.</p></td>
+    </tr>
+    <tr>
+      <th>addl</th>
+      <td><p>A string vector of any additional directories to create. Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>gitblank</th>
+      <td><p>Logical: whether to write a blank placeholder file in each new directory to force git tracking, even without yet having folder contents. Default: TRUE. If FALSE, empty directories will <em>not</em> be tracked by git.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/sysfonts/man/font_add.html'>sysfonts::font_add()</a></code>, <code><a href='https://rdrr.io/pkg/sysfonts/man/font_add_google.html'>sysfonts::font_add_google()</a></code></p></div>
+    <p>Returns nothing, but prints paths to newly created directories.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This sets up a typical project directory structure that we use for many projects at DataHaven. It will write directories at the specified path, but it will NOT overwrite any directories that already exist. You'll have the option to cancel before anything is written.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
